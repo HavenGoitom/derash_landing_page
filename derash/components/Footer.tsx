@@ -1,13 +1,41 @@
-import { Activity, Twitter, Linkedin, Github, Mail, MapPin, Phone } from "lucide-react";
+import { Twitter, Linkedin, Github, Mail, MapPin, Phone, Icon } from "lucide-react";
 
-// Only real in-page anchor links — no placeholder or broken links
+function DerashLogo({ size = 38 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size * 1.18}
+      viewBox="0 0 100 118"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Map pin shape */}
+      <path
+        d="M50 2C27.9 2 10 19.9 10 42C10 64.1 50 116 50 116C50 116 90 64.1 90 42C90 19.9 72.1 2 50 2Z"
+        fill="#E8182A"
+      />
+      {/* White horizontal divider line */}
+      <line x1="14" y1="48" x2="86" y2="48" stroke="white" strokeWidth="4" />
+      {/* Heartbeat / ECG line */}
+      <polyline
+        points="18,48 30,48 36,30 42,62 48,38 54,58 58,48 82,48"
+        fill="none"
+        stroke="white"
+        strokeWidth="4.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 const footerLinks = {
   Navigate: [
-    { label: "Features",      href: "#features" },
-    { label: "How It Works",  href: "#how-it-works" },
-    { label: "For Everyone",  href: "#for-everyone" },
-    { label: "Testimonials",  href: "#testimonials" },
-    { label: "Contact",       href: "#contact" },
+    { label: "Features",     href: "#features" },
+    { label: "How It Works", href: "#how-it-works" },
+    { label: "For Everyone", href: "#for-everyone" },
+    { label: "Testimonials", href: "#testimonials" },
+    { label: "Contact",      href: "#contact" },
   ],
 };
 
@@ -19,13 +47,18 @@ export function Footer() {
 
           {/* Brand col */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-brand-red flex items-center justify-center shadow-lg shadow-brand-red/30">
-                <Activity className="w-5 h-5 text-white" strokeWidth={2.5} />
+            {/* Logo — map pin style matching reference */}
+            <div className="flex items-center gap-3 mb-4">
+              <div className="flex-shrink-0 drop-shadow-md">
+                <DerashLogo size={40} />
               </div>
-              <div>
-                <div className="font-bold text-lg text-white tracking-tight leading-none">DerashCare</div>
-                <div className="text-[10px] text-brand-green-light font-medium tracking-wider">ደራሽ</div>
+              <div className="flex flex-col leading-none gap-1">
+                <span className="font-extrabold text-xl text-white tracking-tight leading-none">
+                  Derash
+                </span>
+                <span className="text-sm font-semibold text-[#1a7a4a] leading-none">
+                  ደራሽ
+                </span>
               </div>
             </div>
 
@@ -61,7 +94,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Single nav column — only real anchors */}
+          {/* Quick links */}
           <div>
             <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Quick Links</h3>
             <ul className="space-y-2.5">
@@ -82,7 +115,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="py-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-gray-600">
-            © {new Date().getFullYear()} DerashCare Technologies.All rights reserved.
+            © {new Date().getFullYear()} DerashCare Technologies PLC. All rights reserved. Registered in Ethiopia.
           </p>
           <div className="flex items-center gap-4">
             <span className="text-xs text-gray-600">🇪🇹 Made with care in Addis Ababa</span>
